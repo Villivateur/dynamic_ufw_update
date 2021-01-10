@@ -11,7 +11,7 @@ def update_ufw():
     token = request.args.get('token')
     if token != duu_settings["token"]:
         return jsonify({'your_ip': "bad token"}), 403
-    os.system(f'sudo ufw allow from {request.environ.get('HTTP_X_REAL_IP', request.remote_addr)} to any port 443')
+    os.system(f"sudo ufw allow from {request.environ.get('HTTP_X_REAL_IP', request.remote_addr)} to any port 443")
     return jsonify({'your_ip': request.environ.get('HTTP_X_REAL_IP', request.remote_addr)}), 200
 
 if __name__ == '__main__':
