@@ -13,3 +13,6 @@ def update_ufw():
         return jsonify({'your_ip': "bad token"}), 403
     os.system(f'sudo ufw allow from {request.remote_addr} to any port 443')
     return jsonify({'your_ip': request.remote_addr}), 200
+
+if __name__ == '__main__':
+    app.run()
